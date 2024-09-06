@@ -7,7 +7,7 @@ config-tracker is a way of keeping track of changes to server configuration file
 ### Download
 
 	cd /usr/local
-	git clone git://github.com/dansimau/config-tracker.git config-tracker
+	git clone git@github.com:adamppp/config-tracker.git
 
 ### Configure
 

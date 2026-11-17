@@ -91,7 +91,11 @@ commit() {
 	git add -A
 
 	# Generate log message of changed files
-	message="$(git diff --cached --name-status 2>/dev/null)"
+    	message="$(git diff --cached --name-status 2>/dev/null | awk '
+        	NR <= 50 { print }
+        	NR > 50  { extra++ }
+        	END      { if (extra > 0) printf "... and %d more files\n", extra }
+    	')"
 
 	# Use a generic message, eg. for first runs
 	[ -z "$message" ] && message="Auto-commit (diff could not be generated)."
